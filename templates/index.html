@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cipher Tools | Premium Security</title>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Phosphor Icons (Premium Vector Icons) -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
+            mono: ["Courier New", "monospace"],
+          },
+          colors: {
+            midnight: "#020617", // Deepest slate
+            obsidian: "#0f172a",
+            accent: {
+              DEFAULT: "#8b5cf6", // Violet 500
+              glow: "#a78bfa",
+            },
+          },
+          backgroundImage: {
+            "premium-gradient":
+              "radial-gradient(circle at 50% 0%, #1e1b4b 0%, #020617 70%)",
+            "glass-card":
+              "linear-gradient(145deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.6) 100%)",
+          },
+          animation: {
+            fadeIn: "fadeIn 0.8s ease-out forwards",
+            shimmer: "shimmer 2s linear infinite",
+            float: "float 6s ease-in-out infinite",
+          },
+          keyframes: {
+            fadeIn: {
+              "0%": { opacity: "0", transform: "translateY(20px)" },
+              "100%": { opacity: "1", transform: "translateY(0)" },
+            },
+            shimmer: {
+              "0%": { backgroundPosition: "-200% 0" },
+              "100%": { backgroundPosition: "200% 0" },
+            },
+            float: {
+              "0%, 100%": { transform: "translateY(0)" },
+              "50%": { transform: "translateY(-10px)" },
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    /* Custom scrollbar for webkit */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #475569;
+    }
+
+    /* Animated Mesh Background (CSS Fallback) */
+    body::before {
+      content: "";
+      position: absolute;
+      top: -20%;
+      left: -20%;
+      width: 140%;
+      height: 140%;
+      background: radial-gradient(circle at 50% 50%,
+          rgba(124, 58, 237, 0.08) 0%,
+          transparent 50%);
+      z-index: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+
+<body
+  class="bg-midnight min-h-screen flex items-center justify-center p-4 font-sans text-slate-200 overflow-x-hidden selection:bg-accent selection:text-white"
+  style="
+      background-image: radial-gradient(
+        ellipse at top,
+        #172554 0%,
+        #020617 60%
+      );
+    ">
+  <div class="container max-w-4xl w-full relative z-10 animate-fadeIn">
+    <!-- Header -->
+    <header class="text-center mb-12 relative">
+      <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-accent/20 blur-[100px] rounded-full pointer-events-none animate-pulse">
+      </div>
+      <h1
+        class="text-5xl md:text-6xl font-bold mb-4 tracking-tighter bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+        Cipher Tools
+      </h1>
+      <p class="text-slate-400 text-lg font-light tracking-wide flex items-center justify-center gap-2">
+        <i class="ph ph-shield-check text-accent"></i> Premium Encryption
+        Suite
+      </p>
+    </header>
+
+    <!-- Glass Card -->
+    <main
+      class="relative bg-glass-card backdrop-blur-2xl border border-white/5 rounded-[2rem] shadow-[0_0_50px_-12px_rgba(0,0,0,0.5)] p-8 md:p-12 overflow-hidden ring-1 ring-white/5 group">
+      <!-- Top sheen effect -->
+      <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent">
+      </div>
+
+      <!-- Segmented Control -->
+      <div
+        class="segmented-control relative flex bg-black/20 p-2 rounded-2xl mb-10 border border-white/5 ring-1 ring-white/5 backdrop-blur-md">
+        <!-- Active Indicator -->
+        <div
+          class="active-indicator absolute top-2 left-2 h-[calc(100%-16px)] bg-white/10 shadow-[0_4px_20px_-2px_rgba(0,0,0,0.3)] border border-white/10 rounded-xl z-0 pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]"
+          style="width: 0px; transform: translateX(0px)"></div>
+
+        <button
+          class="cipher-btn active flex-1 py-3 text-sm font-medium text-slate-400 hover:text-white relative z-10 text-center rounded-xl transition-all duration-300 tracking-wide flex items-center justify-center gap-2"
+          data-cipher="vigenere">
+          <i class="ph ph-grid-four"></i> Vigenère
+        </button>
+        <button
+          class="cipher-btn flex-1 py-3 text-sm font-medium text-slate-400 hover:text-white relative z-10 text-center rounded-xl transition-all duration-300 tracking-wide flex items-center justify-center gap-2"
+          data-cipher="caesar">
+          <i class="ph ph-arrows-left-right"></i> Caesar
+        </button>
+        <button
+          class="cipher-btn flex-1 py-3 text-sm font-medium text-slate-400 hover:text-white relative z-10 text-center rounded-xl transition-all duration-300 tracking-wide flex items-center justify-center gap-2"
+          data-cipher="number">
+          <i class="ph ph-numpad"></i> Number
+        </button>
+        <button
+          class="cipher-btn flex-1 py-3 text-sm font-medium text-slate-400 hover:text-white relative z-10 text-center rounded-xl transition-all duration-300 tracking-wide flex items-center justify-center gap-2"
+          data-cipher="columnar">
+          <i class="ph ph-columns"></i> Columnar
+        </button>
+      </div>
+
+      <div class="workspace space-y-8">
+        <!-- Input Group -->
+        <div class="group/input">
+          <label for="inputText"
+            class="flex items-center gap-2 text-sm font-semibold text-slate-300 mb-3 uppercase tracking-wider pl-1">
+            <i class="ph ph-text-aa text-accent text-lg"></i> Plain Text ||
+            Cipher Text
+          </label>
+          <div class="relative group-focus-within/input:scale-[1.01] transition-transform duration-300">
+            <div
+              class="absolute -inset-0.5 bg-gradient-to-r from-accent to-fuchsia-600 rounded-2xl blur opacity-0 group-focus-within/input:opacity-20 transition duration-500">
+            </div>
+            <textarea id="inputText" placeholder="Enter your message..."
+              class="relative w-full bg-black/20 border border-white/10 rounded-2xl p-5 text-base font-light font-mono focus:outline-none focus:border-white/20 focus:bg-black/40 text-slate-200 placeholder:text-slate-600 min-h-[140px] resize-y transition-all duration-300 shadow-inner"></textarea>
+          </div>
+        </div>
+
+        <!-- Key Group -->
+        <div class="group/key" id="keyGroup">
+          <label for="inputKey"
+            class="flex items-center gap-2 text-sm font-semibold text-slate-300 mb-3 uppercase tracking-wider pl-1">
+            <i class="ph ph-key text-accent text-lg"></i> Key
+          </label>
+          <div class="relative group-focus-within/key:scale-[1.01] transition-transform duration-300">
+            <input type="text" id="inputKey" placeholder="Enter encryption key..."
+              class="w-full bg-black/20 border border-white/10 rounded-2xl p-5 text-base font-light font-mono focus:outline-none focus:border-white/20 focus:bg-black/40 text-slate-200 placeholder:text-slate-600 transition-all duration-300 shadow-inner" />
+            <textarea id="inputKeyMulti" placeholder="Enter valid keys (one per line)..."
+              class="w-full bg-black/20 border border-white/10 rounded-2xl p-5 text-base font-light font-mono focus:outline-none focus:border-white/20 focus:bg-black/40 text-slate-200 placeholder:text-slate-600 transition-all duration-300 shadow-inner hidden min-h-[140px] resize-y"></textarea>
+          </div>
+        </div>
+
+        <!-- Controls: Action Selector & Run -->
+        <div class="flex flex-col gap-6 pt-4">
+          <!-- Action Selector (Segmented Control) -->
+          <div
+            class="segmented-control action-selector relative flex bg-black/20 p-2 rounded-2xl border border-white/5 ring-1 ring-white/5 backdrop-blur-md">
+            <!-- Active Indicator -->
+            <div
+              class="active-indicator-action absolute top-2 left-2 h-[calc(100%-16px)] bg-white/10 shadow-[0_4px_20px_-2px_rgba(0,0,0,0.3)] border border-white/10 rounded-xl z-0 pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]"
+              style="width: 0px; transform: translateX(0px)"></div>
+
+            <button
+              class="action-btn active flex-1 py-3 text-sm font-medium text-slate-400 hover:text-white relative z-10 text-center rounded-xl transition-all duration-300 tracking-wide flex items-center justify-center gap-2"
+              data-action="encrypt">
+              <i class="ph-bold ph-lock-key"></i> Encrypt
+            </button>
+            <button
+              class="action-btn flex-1 py-3 text-sm font-medium text-slate-400 hover:text-white relative z-10 text-center rounded-xl transition-all duration-300 tracking-wide flex items-center justify-center gap-2"
+              data-action="decrypt">
+              <i class="ph-bold ph-lock-key-open"></i> Decrypt
+            </button>
+            <button
+              class="action-btn flex-1 py-3 text-sm font-medium text-slate-400 hover:text-white relative z-10 text-center rounded-xl transition-all duration-300 tracking-wide flex items-center justify-center gap-2"
+              data-action="autocrack">
+              <i class="ph-bold ph-magic-wand"></i> Auto Crack
+            </button>
+          </div>
+
+          <!-- Main Run Button -->
+          <button id="mainActionBtn"
+            class="relative w-full group overflow-hidden bg-gradient-to-br from-violet-600 to-indigo-600 text-white font-bold py-5 rounded-2xl shadow-[0_0_20px_-5px_rgba(124,58,237,0.5)] transition-all duration-300 hover:shadow-[0_0_30px_-5px_rgba(124,58,237,0.7)] hover:-translate-y-1 active:scale-[0.98]">
+            <div
+              class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl">
+            </div>
+            <div class="relative flex justify-center items-center gap-3">
+              <i id="mainActionIcon" class="ph-bold ph-play text-xl"></i>
+              <span id="mainActionText" class="tracking-widest text-lg">RUN PROCESS</span>
+            </div>
+          </button>
+        </div>
+
+        <!-- Output Group -->
+        <div class="pt-10 mt-6 border-t border-white/5">
+          <div class="flex justify-between items-center mb-4 pl-1">
+            <label class="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2">
+              Output
+            </label>
+            <!-- Timer Badge -->
+            <!-- Timer removed as per request -->
+          </div>
+          <div class="relative group/output">
+            <div
+              class="absolute -inset-0.5 bg-gradient-to-r from-emerald-500/0 to-emerald-500/0 group-hover/output:from-emerald-500/10 group-hover/output:to-teal-500/10 rounded-2xl blur transition duration-500 opacity-0 group-hover/output:opacity-100">
+            </div>
+            <div id="outputText"
+              class="relative w-full bg-obsidian/50 border border-white/10 rounded-2xl p-5 text-base font-mono focus:outline-none min-h-[140px] overflow-auto whitespace-pre-wrap break-words text-emerald-300/90 shadow-inner">
+              Waiting for processing...
+            </div>
+            <button id="copyBtn"
+              class="absolute top-3 right-3 p-2 bg-white/10 border border-white/20 text-slate-300 hover:text-white hover:bg-white/20 hover:border-white/30 rounded-xl transition-all duration-300 backdrop-blur-md shadow-sm"
+              title="คัดลอก">
+              <i class="ph ph-copy text-lg"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Console Log -->
+        <div class="bg-black/60 rounded-2xl border border-white/5 overflow-hidden mt-8 backdrop-blur-sm">
+          <div class="flex justify-between items-center px-5 py-3 bg-white/5 border-b border-white/5">
+            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em] flex items-center gap-2">
+              <i class="ph ph-terminal-window"></i> System Log
+            </span>
+            <button id="clearLogBtn"
+              class="text-[10px] text-slate-600 hover:text-red-400 transition-colors uppercase font-bold tracking-wider flex items-center gap-1">
+              <i class="ph ph-trash"></i> Clear
+            </button>
+          </div>
+          <div id="logConsole" class="h-32 overflow-y-auto p-5 font-mono text-xs space-y-2 scrollbar-thin">
+            <div class="text-slate-700 italic flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-slate-700 animate-pulse"></span>
+              System initialized and ready...
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="text-center mt-8 text-slate-600 text-sm font-light flex items-center justify-center gap-2"></footer>
+  </div>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
